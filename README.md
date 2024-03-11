@@ -1,6 +1,6 @@
-# TicTacToe
+# Simon Game
 
-Only using html, tailwind, fontawesome and pure js.
+Only using html, tailwind and pure js.
 
 ## Execute
 
