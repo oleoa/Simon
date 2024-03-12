@@ -50,7 +50,7 @@ class Game
     if(this.playerCanPlay == false) return;
     this.sequencePlayed.push(color);
     this.sequencePlayed.forEach((played, i) => {
-      if(played != this.sequenceChosen[i]) this.lostTheGame();
+      if(played != this.sequenceChosen[i]) return this.lostTheGame();
       if(this.sequencePlayed.length == this.sequenceChosen.length) this.nextRoud();
     });
   }
@@ -66,8 +66,10 @@ class Game
 
   lostTheGame()
   {
-    this.disableButtons();
-    this.infoSpan.innerHTML = 'Lost!';
+    this.reset();
+    
+    this.startButton.classList.remove('hidden');
+    this.infoSpan.classList.remove('hidden');
   }
 
   startGame()
@@ -81,6 +83,15 @@ class Game
     this.displaySequence();
   }
 
+  reset()
+  {
+    this.disableButtons();
+    this.sequenceChosen = [];
+    this.sequencePlayed = [];
+    this.gameSpeed = 1000;
+    this.infoSpan.innerHTML = 'Lost!';
+  }
+  
   displaySequence()
   {
     this.playerCanPlay = false;
